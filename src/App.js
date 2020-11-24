@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "./components/Modal/Modal";
+import { GlobalStyle } from "./globalStyles";
 
 const Container = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ function App() {
       <Container>
         <Button onClick={openModal}>I'm a modal</Button>
         <Modal showModal={showModal} setShowModal={setShowModal} />
+        <GlobalStyle />
       </Container>
     </>
   );
