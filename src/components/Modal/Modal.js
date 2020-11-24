@@ -1,5 +1,8 @@
+import React, { useRef, useEffect, useCallback } from "react";
+import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
+import Fitness from "../../image/modal.jpg";
 
 const Background = styled.div`
   width: 100%;
@@ -10,6 +13,7 @@ const Background = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const ModalWrapper = styled.div`
   width: 800px;
   height: 500px;
@@ -26,7 +30,7 @@ const ModalWrapper = styled.div`
 const ModalImg = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 9px 0 0 9px;
   background: #000;
 `;
 
@@ -47,6 +51,7 @@ const ModalContent = styled.div`
     background: #141414;
     color: #fff;
     border: none;
+    cursor: pointer;
   }
 `;
 
@@ -62,25 +67,33 @@ const CloseModalButton = styled(MdClose)`
 `;
 
 export const Modal = ({ showModal, setShowModal }) => {
+  const modalRef = useRef();
+  const animation = useSpring({
+    config: {
+      duration: 250,
+    },
+    opacity: showModal ? 1 : 0,
+    transform: showModal ? "translateY(0%)" : "translateY(-100%)",
+  });
+
   return (
     <>
       {showModal ? (
         <Background>
-          <ModalWrapper showModal={showModal}>
-            <ModalImg
-              src={require("../../image/modal.jpg")}
-              alt="Fitness Boy"
-            />
-            <ModalContent>
-              <h1>Are you ready?</h1>
-              <p>Get exclusive access to our next launch.</p>
-              <button>Join Now</button>
-            </ModalContent>
-            <CloseModalButton
-              aria-label="Close Modal"
-              onClick={() => setShowModal((previous) => !previous)}
-            />
-          </ModalWrapper>
+          <animated.div style={animation}>
+            <ModalWrapper showModal={showModal}>
+              <ModalImg src={Fitness} alt="Fitness Boy" />
+              <ModalContent>
+                <h1>Are you ready?</h1>
+                <p>Get exclusive access to our next launch.</p>
+                <button>Join Now</button>
+              </ModalContent>
+              <CloseModalButton
+                aria-label="Close Modal"
+                onClick={() => setShowModal((previous) => !previous)}
+              />
+            </ModalWrapper>
+          </animated.div>
         </Background>
       ) : null}
     </>
