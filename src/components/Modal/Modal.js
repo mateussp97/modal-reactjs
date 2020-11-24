@@ -15,8 +15,8 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 800px;
-  height: 500px;
+  width: 900px;
+  height: 600px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -39,19 +39,29 @@ const ModalContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: start;
   line-height: 1.8;
   color: #141414;
 
-  p {
+  h1 {
+    margin-bottom: 3rem;
+  }
+
+  h3 {
     margin-bottom: 1rem;
   }
 
+  p {
+    margin-bottom: 2rem;
+  }
+
   button {
-    padding: 10px 24px;
+    padding: 15px 29px;
     background: #141414;
     color: #fff;
     border: none;
     cursor: pointer;
+    margin-top: 3rem;
   }
 `;
 
@@ -104,9 +114,21 @@ export const Modal = ({ showModal, setShowModal }) => {
             <ModalWrapper showModal={showModal}>
               <ModalImg src={Fitness} alt="Fitness Boy" />
               <ModalContent>
-                <h1>Are you ready?</h1>
-                <p>Get exclusive access to our next launch.</p>
-                <button>Join Now</button>
+                <h1>Hipertrofia</h1>
+                <h3>O que será feito?</h3>
+                <p>
+                  Iremos potencializar seu ganho de massa muscular com ajustes
+                  individuais feitos para sua genética!
+                </p>
+                <h3>Iremos analisar:</h3>
+                <ul>
+                  <li>Biotipo corporal</li>
+                  <li>
+                    Análise da taxa de metabolismo basal e cálculo de calorias
+                  </li>
+                  <li>Adequação da dieta de acordo com o treino</li>
+                </ul>
+                <button>Entre em Contato</button>
               </ModalContent>
               <CloseModalButton
                 aria-label="Close Modal"
