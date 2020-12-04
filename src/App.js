@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 import styled from "styled-components";
 import { Modal } from "./components/Modal/Modal";
 import { GlobalStyle } from "./globalStyles";
